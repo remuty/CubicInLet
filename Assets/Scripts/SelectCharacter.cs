@@ -31,4 +31,9 @@ public class SelectCharacter : MonoBehaviour
     {
         characterNum = 2;
     }
+
+    public void Select3()
+    {
+        characterNum = 3;
+    }
 }

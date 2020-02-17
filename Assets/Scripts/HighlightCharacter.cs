@@ -26,7 +26,7 @@ public class HighlightCharacter : MonoBehaviour
             }
             else
             {
-                colors.normalColor = new Color(1, 1, 1, 200f / 255f);
+                colors.normalColor = new Color(1, 1, 1, 170f / 255f);
             }
 
             btn.colors = colors;
