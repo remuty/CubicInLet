@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class SampleScene : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private string[] characterName;
     private void Start()
     {
         // PhotonServerSettingsに設定した内容を使ってマスターサーバーへ接続する
@@ -22,8 +23,9 @@ public class SampleScene : MonoBehaviourPunCallbacks
     // マッチングが成功した時に呼ばれるコールバック
     public override void OnJoinedRoom()
     {
+        var n = SelectCharacter.characterNum;
         // マッチング後、ランダムな位置に自分自身のネットワークオブジェクトを生成する
         var v = new Vector3(Random.Range(-7f, 7f), Random.Range(1f, 3f));
-        PhotonNetwork.Instantiate("Fraia", v, Quaternion.identity);
+        PhotonNetwork.Instantiate(characterName[n], v, Quaternion.identity);
     }
 }
