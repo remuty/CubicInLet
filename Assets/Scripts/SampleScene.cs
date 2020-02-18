@@ -25,7 +25,7 @@ public class SampleScene : MonoBehaviourPunCallbacks
     {
         var n = SelectCharacter.characterNum;
         // マッチング後、自分自身のネットワークオブジェクトを生成する
-        var v = new Vector3(2, 0.5f);
+        var v = new Vector2(2, 0.5f);
         PhotonNetwork.Instantiate(characterName[n], v, Quaternion.identity);
     }
 }

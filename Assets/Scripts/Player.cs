@@ -1,15 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    [SerializeField] private float speed = 5f,jumpForce = 200f;
+    [SerializeField] private float speed = 2f,jumpForce = 200f;
 
     private Rigidbody2D rb;
 
     private SpriteRenderer renderer;
+
+    private bool isJump;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        // 自身が生成したオブジェクトだけに移動処理を行う
+        // 自身が生成したオブジェクトだけに処理を行う
         if (photonView.IsMine)
         {
             // 入力方向（ベクトル）を正規化する
@@ -42,10 +45,20 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             var dv = speed * Time.deltaTime * direction;
             transform.Translate(dv.x, dv.y, 0f);
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            //ジャンプ
+            if (Input.GetKeyDown(KeyCode.Space) && !isJump)
             {
+                isJump = true;
                 this.rb.AddForce(transform.up * this.jumpForce);
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isJump = false;
         }
     }
 
