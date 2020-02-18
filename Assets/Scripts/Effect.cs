@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
+    [SerializeField] private float x,y;
+    [SerializeField] private GameObject childObj;
     private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -24,7 +26,16 @@ public class Effect : MonoBehaviour
     public void Init(Vector3 origin, bool isFlip, GameObject parent)
     {
         transform.position = origin;
-        GetComponent<SpriteRenderer>().flipX = isFlip;
+        GetComponentInChildren<SpriteRenderer>().flipX = isFlip;
         this.transform.parent = parent.transform;
+
+        if (transform.localPosition.x > 0)
+        {
+            childObj.transform.localPosition = new Vector3(-x, y);
+        }
+        else
+        {
+            childObj.transform.localPosition = new Vector3(x, y);
+        }
     }
 }
