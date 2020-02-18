@@ -212,6 +212,6 @@ MonoBehaviour:
   speed: 3
   jumpForce: 200
   effects:
-  - {fileID: 0}
+  - {fileID: 114936380763534766, guid: 8a5657c7c2e75784a859673c57a45e03, type: 3}
   - {fileID: 114872002939274434, guid: 4e645b540edfa7b4ca577f9d6f8bc434, type: 3}
   - {fileID: 114625064615467574, guid: bb1a4ad72fd610f4b8c045c0de2622c6, type: 3}

@@ -5,12 +5,6 @@ using UnityEngine;
 public class Effect : MonoBehaviour
 {
     private Animator animator;
-    public void Init(Vector3 origin, bool isFlip, GameObject parent)
-    {
-        transform.position = origin;
-        GetComponent<SpriteRenderer>().flipX = isFlip;
-        this.transform.parent = parent.transform;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +19,12 @@ public class Effect : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Init(Vector3 origin, bool isFlip, GameObject parent)
+    {
+        transform.position = origin;
+        GetComponent<SpriteRenderer>().flipX = isFlip;
+        this.transform.parent = parent.transform;
     }
 }
