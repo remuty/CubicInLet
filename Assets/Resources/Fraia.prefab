@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 485447870057338906}
   - component: {fileID: 485447870057338907}
   - component: {fileID: 485447870057338903}
+  - component: {fileID: 1449599830583776356}
   - component: {fileID: 114257996392126458}
   - component: {fileID: 114211555393827024}
   - component: {fileID: 114516795981175750}
   - component: {fileID: 114918843319855524}
-  - component: {fileID: 1449599830583776356}
   m_Layer: 0
   m_Name: Fraia
   m_TagString: Untagged
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 504989829
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 86f5526723d6b9c4fb4fa886a693e67b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,6 +126,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &1449599830583776356
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485447870057338904}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0018065274, y: 0.009032726}
+  m_Size: {x: 0.4977855, y: 0.98193455}
+  m_Direction: 0
 --- !u!114 &114257996392126458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,19 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   jumpForce: 200
---- !u!70 &1449599830583776356
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485447870057338904}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0018065274, y: 0.009032726}
-  m_Size: {x: 0.4977855, y: 0.98193455}
-  m_Direction: 0
+  effects:
+  - {fileID: 0}
+  - {fileID: 114872002939274434, guid: 4e645b540edfa7b4ca577f9d6f8bc434, type: 3}
+  - {fileID: 114625064615467574, guid: bb1a4ad72fd610f4b8c045c0de2622c6, type: 3}

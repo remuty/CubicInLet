@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 9058740628031827777}
   - component: {fileID: 9058740628031827902}
   - component: {fileID: 9058740628031827903}
+  - component: {fileID: 114625064615467574}
   m_Layer: 0
-  m_Name: FraiaAttack3
+  m_Name: FraiaAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1729912411
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: adb75b7d8f510b149952782a389eeb40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,3 +100,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114625064615467574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058740628031827900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807051cca01d0e6449bd6611969d1232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

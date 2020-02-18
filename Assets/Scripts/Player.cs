@@ -7,10 +7,11 @@ using Photon.Pun;
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private float speed = 2f,jumpForce = 200f;
+    [SerializeField] private Effect[] effects;
 
     private Rigidbody2D rb;
-
     private SpriteRenderer renderer;
+    private Animator animator;
 
     private bool isJump;
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         if (photonView.IsMine)
         {
             GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
@@ -51,6 +53,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 isJump = true;
                 this.rb.AddForce(transform.up * this.jumpForce);
             }
+
+            PlayAttack();
         }
     }
 
@@ -60,6 +64,53 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             isJump = false;
         }
+    }
+
+    void PlayAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Attack(0);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Attack(1);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Attack(2);
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            animator.SetInteger("Attack", -1);
+        }
+    }
+
+    void Attack(int n)
+    {
+        animator.SetInteger("Attack", n);
+
+        var pos = transform.position;
+        if (renderer.flipX)
+        {
+            pos.x += 1;
+        }
+        else
+        {
+            pos.x -= 1;
+        }
+
+        //RPCで実行
+        photonView.RPC(nameof(FireEffect), RpcTarget.All,
+            n, pos, renderer.flipX);
+    }
+
+    [PunRPC]
+    void FireEffect(int n, Vector3 pos, bool isFlip)
+    {
+        var effect = Instantiate(effects[n]);
+        effect.Init(pos, isFlip, this.gameObject);
     }
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
