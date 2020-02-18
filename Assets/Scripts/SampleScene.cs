@@ -24,8 +24,8 @@ public class SampleScene : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         var n = SelectCharacter.characterNum;
-        // マッチング後、ランダムな位置に自分自身のネットワークオブジェクトを生成する
-        var v = new Vector3(Random.Range(-7f, 7f), Random.Range(1f, 3f));
+        // マッチング後、自分自身のネットワークオブジェクトを生成する
+        var v = new Vector3(2, 0.5f);
         PhotonNetwork.Instantiate(characterName[n], v, Quaternion.identity);
     }
 }

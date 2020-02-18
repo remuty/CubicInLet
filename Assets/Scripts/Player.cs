@@ -15,6 +15,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
+        if (photonView.IsMine)
+        {
+            GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
+        }
     }
 
     // Update is called once per frame
