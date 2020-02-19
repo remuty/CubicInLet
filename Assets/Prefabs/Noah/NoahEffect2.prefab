@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114936380763534766}
   - component: {fileID: 114585849813764048}
   m_Layer: 0
-  m_Name: FraiaAttack0
+  m_Name: NoahEffect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7093566504113524654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1729912411
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a77b0377516a6424ab981b8bfbe04b15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e83351555d7bd134dbcb4eead41cca04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +92,7 @@ Animator:
   m_GameObject: {fileID: 7093566504113524654}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d19ff79f478cd53488bfa79b9f29224d, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -113,6 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807051cca01d0e6449bd6611969d1232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  childObj: {fileID: 0}
 --- !u!114 &114585849813764048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +125,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7093566504113524654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5003a119ec6b743aca948c1f77e667, type: 3}
+  m_Script: {fileID: 11500000, guid: 8495f2c4627ace748a79ab4b4dfcf84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

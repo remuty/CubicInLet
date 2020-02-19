@@ -29,13 +29,17 @@ public class Effect : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().flipX = isFlip;
         this.transform.parent = parent.transform;
 
-        if (transform.localPosition.x > 0)
+        //エフェクト位置調整
+        if (childObj != null)
         {
-            childObj.transform.localPosition = new Vector3(-x, y);
-        }
-        else
-        {
-            childObj.transform.localPosition = new Vector3(x, y);
+            if (transform.localPosition.x > 0)
+            {
+                childObj.transform.localPosition = new Vector3(-x, y);
+            }
+            else
+            {
+                childObj.transform.localPosition = new Vector3(x, y);
+            }
         }
     }
 }
