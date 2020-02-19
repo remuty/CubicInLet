@@ -4745,7 +4745,7 @@ GameObject:
   - component: {fileID: 1306535208}
   - component: {fileID: 1306535207}
   m_Layer: 0
-  m_Name: ConnectPhoton
+  m_Name: ConnectRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

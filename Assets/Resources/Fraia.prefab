@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 114918843319855524}
   m_Layer: 0
   m_Name: Fraia
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,8 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd492d9c0d5325e4193962ee14ed8062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  jumpForce: 200
+  parameter: {fileID: 11400000, guid: 5b428f40d4a4bd546a3020c1cc907141, type: 2}
   effects:
   - {fileID: 114936380763534766, guid: 8a5657c7c2e75784a859673c57a45e03, type: 3}
   - {fileID: 5897489322444355226, guid: 1387d9a52bbedb446b323dd606612cfe, type: 3}

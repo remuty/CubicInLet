@@ -9,13 +9,6 @@ public class SampleScene : MonoBehaviourPunCallbacks
     [SerializeField] private string[] characterName;
     private void Start()
     {
-        // PhotonServerSettingsに設定した内容を使ってマスターサーバーへ接続する
-        PhotonNetwork.ConnectUsingSettings();
-    }
-
-    // マスターサーバーへの接続が成功した時に呼ばれるコールバック
-    public override void OnConnectedToMaster()
-    {
         // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
         PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
     }

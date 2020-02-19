@@ -3,20 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    [SerializeField] private float speed = 2f,jumpForce = 200f;
+    [SerializeField] private Parameter parameter;
     [SerializeField] private Effect[] effects;
 
     private Rigidbody2D rb;
     private SpriteRenderer renderer;
     private Animator animator;
 
+    private int hp;
     private bool isJump;
     // Start is called before the first frame update
     void Start()
     {
+        hp = parameter.maxHp;
+
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -29,6 +33,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         // 自身が生成したオブジェクトだけに処理を行う
         if (photonView.IsMine)
         {
@@ -44,17 +53,27 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             }
 
             // 移動速度を時間に依存させて、移動量を求める
-            var dv = speed * Time.deltaTime * direction;
+            var dv = parameter.speed * Time.deltaTime * direction;
             transform.Translate(dv.x, dv.y, 0f);
 
             //ジャンプ
             if (Input.GetKeyDown(KeyCode.Space) && !isJump)
             {
                 isJump = true;
-                this.rb.AddForce(transform.up * this.jumpForce);
+                this.rb.AddForce(transform.up * parameter.jumpPower);
             }
 
             PlayAttack();
+
+            if (hp <= 0)
+            {
+                SceneManager.LoadScene("Select");
+                if (PhotonNetwork.InRoom)
+                {
+                    // 退室
+                    PhotonNetwork.LeaveRoom();
+                }
+            }
         }
     }
 
@@ -63,6 +82,20 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (other.gameObject.CompareTag("Ground"))
         {
             isJump = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Attack"))
+        {
+            //攻撃に応じてダメージを受ける
+            var s = other.gameObject.name.Replace("(Clone)", "");
+            var n = int.Parse(s);
+
+            var enemy = other.GetComponentInParent<Player>();
+            hp -= enemy.parameter.atk[n];
+            Debug.Log(hp);
         }
     }
 

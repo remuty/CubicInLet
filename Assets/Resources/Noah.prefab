@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1449599830583776356}
   m_Layer: 0
   m_Name: Noah
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,8 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd492d9c0d5325e4193962ee14ed8062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  jumpForce: 200
+  parameter: {fileID: 11400000, guid: 5b428f40d4a4bd546a3020c1cc907141, type: 2}
   effects:
   - {fileID: 114936380763534766, guid: 44e9f69119709c14ab11c1d45fe93a62, type: 3}
   - {fileID: 114936380763534766, guid: ceac858037ac6ad47858d86ee333fa60, type: 3}

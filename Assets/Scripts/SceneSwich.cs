@@ -21,4 +21,9 @@ public class SceneSwich : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+
+    public void LoadSelect()
+    {
+        SceneManager.LoadScene("Select");
+    }
 }
