@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1578312300353889484}
   - component: {fileID: 114936380763534766}
   - component: {fileID: 114585849813764048}
+  - component: {fileID: 429349649836818750}
   m_Layer: 0
   m_Name: 2
   m_TagString: Attack
@@ -128,3 +129,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8495f2c4627ace748a79ab4b4dfcf84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &429349649836818750
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7093566504113524654}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.053242, y: 0.009681016}
+  m_Size: {x: 0.66152287, y: 0.24154378}
+  m_Direction: 1

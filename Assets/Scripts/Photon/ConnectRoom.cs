@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class SampleScene : MonoBehaviourPunCallbacks
+public class ConnectRoom : MonoBehaviourPunCallbacks
 {
     [SerializeField] private string[] characterName;
     private void Start()
