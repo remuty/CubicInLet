@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+
+public class ConnectRoom : MonoBehaviourPunCallbacks
+{
+    [SerializeField] private string[] characterName;
+    private void Start()
+    {
+        // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
+        PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
+    }
+
+    // マッチングが成功した時に呼ばれるコールバック
+    public override void OnJoinedRoom()
+    {
+        var n = SelectCharacter.characterNum;
+        // マッチング後、自分自身のネットワークオブジェクトを生成する
+        var v = new Vector2(2, 0.5f);
+        PhotonNetwork.Instantiate(characterName[n], v, Quaternion.identity);
+    }
+}
