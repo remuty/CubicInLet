@@ -17,13 +17,18 @@ public class SceneSwich : MonoBehaviour
         
     }
 
-    public void LoadMain()
+    public void LoadLogin()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Login");
     }
 
     public void LoadSelect()
     {
         SceneManager.LoadScene("Select");
+    }
+
+    public void LoadMain()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
