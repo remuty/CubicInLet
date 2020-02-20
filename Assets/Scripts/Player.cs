@@ -15,6 +15,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     private SpriteRenderer renderer;
     private Animator animator;
     private GameObject hpGauge;
+    private Text playerName;
 
     private int hp;
     private bool isJump;
@@ -27,6 +28,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         hpGauge = GameObject.Find("HpGauge");
+        playerName = GetComponentInChildren<Text>();
+        if (photonView.Owner.NickName == "")
+        {
+            playerName.text = parameter.name;
+        }
+        else
+        {
+            playerName.text = photonView.Owner.NickName;
+        }
+
         if (photonView.IsMine)
         {
             GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
@@ -77,7 +88,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
             var enemy = other.GetComponentInParent<Player>();
             hp -= enemy.parameter.atk[n];
-            Debug.Log(hp);
         }
     }
 

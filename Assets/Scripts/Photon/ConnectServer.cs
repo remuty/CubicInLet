@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class ConnectServer : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private InputField input;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +28,10 @@ public class ConnectServer : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.JoinLobby();
         }
+    }
+
+    public void SetPlayerName()
+    {
+        PhotonNetwork.LocalPlayer.NickName = input.text;
     }
 }
