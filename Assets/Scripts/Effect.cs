@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    [SerializeField] private float x,y;
-    [SerializeField] private GameObject childObj;
+    [SerializeField] private float x;
     private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (animator != null)
         {
-            Destroy(gameObject);
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -30,16 +32,13 @@ public class Effect : MonoBehaviour
         this.transform.parent = parent.transform;
 
         //エフェクト位置調整
-        if (childObj != null)
+        if (x != 0)
         {
             if (transform.localPosition.x > 0)
             {
-                childObj.transform.localPosition = new Vector3(-x, y);
+                x *= -1;
             }
-            else
-            {
-                childObj.transform.localPosition = new Vector3(x, y);
-            }
+            transform.localPosition = new Vector3(x, 0);
         }
     }
 }
