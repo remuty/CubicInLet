@@ -197,7 +197,7 @@ MonoBehaviour:
   parameter: {fileID: 11400000, guid: 75c4418c11b7b9449ac548208043c526, type: 2}
   effects:
   - {fileID: 114936380763534766, guid: c045329356f535d41b53ac13cf434c6e, type: 3}
-  - {fileID: 0}
+  - {fileID: 114936380763534766, guid: b2f353086105a3843be52dfd0eb6edba, type: 3}
   - {fileID: 114936380763534766, guid: 0d810577d83287740b996521b9531371, type: 3}
 --- !u!70 &1449599830583776356
 CapsuleCollider2D:

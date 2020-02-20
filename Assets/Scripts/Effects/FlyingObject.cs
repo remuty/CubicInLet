@@ -6,12 +6,12 @@ using UnityEngine;
 public class FlyingObject : MonoBehaviour
 {
     [SerializeField] private float speed, time;
-
     [SerializeField] private bool canPierce;
+    [SerializeField] private GameObject effect;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,9 +33,16 @@ public class FlyingObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!canPierce && other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            if (effect != null)
+            {
+                Instantiate(effect, transform.position, Quaternion.identity);
+            }
+            if (!canPierce)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
