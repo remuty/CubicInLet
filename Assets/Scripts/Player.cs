@@ -130,11 +130,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             Attack(2);
         }
-
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            animator.SetInteger("Attack", -1);
-        }
     }
 
     void Attack(int n)

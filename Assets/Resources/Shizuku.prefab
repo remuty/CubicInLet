@@ -195,7 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter: {fileID: 11400000, guid: 5d22133b88887ed48b67c21d87703396, type: 2}
-  effects: []
+  effects:
+  - {fileID: 114936380763534766, guid: 44e9f69119709c14ab11c1d45fe93a62, type: 3}
+  - {fileID: 114936380763534766, guid: 4d4ba49e3f1476b4da38e963f6e1cbcf, type: 3}
+  - {fileID: 114936380763534766, guid: 9e8f832e3c3545f488e2425f88b606ae, type: 3}
 --- !u!70 &1449599830583776356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

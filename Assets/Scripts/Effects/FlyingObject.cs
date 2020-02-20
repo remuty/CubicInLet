@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyingObject : MonoBehaviour
 {
+    [SerializeField] private float speed, time;
+
+    [SerializeField] private bool canPierce;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +20,22 @@ public class FlyingObject : MonoBehaviour
         var pos = transform.position;
         if (GetComponent<SpriteRenderer>().flipX)
         {
-            pos.x += 0.1f;
+            pos.x += speed;
         }
         else
         {
-            pos.x -= 0.1f;
+            pos.x -= speed;
         }
         transform.position = pos;
 
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, time);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!canPierce && other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
