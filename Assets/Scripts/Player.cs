@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     private Rigidbody2D rb;
     private SpriteRenderer renderer;
     private Animator animator;
+    private GameObject hpGauge;
 
     private int hp;
     private bool isJump;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        hpGauge = GameObject.Find("HpGauge");
         if (photonView.IsMine)
         {
             GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
@@ -33,46 +36,25 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
-
         // 自身が生成したオブジェクトだけに処理を行う
         if (photonView.IsMine)
         {
-            // 入力方向（ベクトル）を正規化する
-            var direction = new Vector2(Input.GetAxis("Horizontal"), 0).normalized;
-            if (direction.x > 0 && !renderer.flipX)
-            {
-                renderer.flipX = true;
-            }
-            else if (direction.x < 0 && renderer.flipX)
-            {
-                renderer.flipX = false;
-            }
-
-            // 移動速度を時間に依存させて、移動量を求める
-            var dv = parameter.speed * Time.deltaTime * direction;
-            transform.Translate(dv.x, dv.y, 0f);
-
-            //ジャンプ
-            if (Input.GetKeyDown(KeyCode.Space) && !isJump)
-            {
-                isJump = true;
-                this.rb.AddForce(transform.up * parameter.jumpPower);
-            }
-
+            Move();
             PlayAttack();
 
             if (hp <= 0)
             {
-                SceneManager.LoadScene("Select");
+                Destroy(gameObject);
                 if (PhotonNetwork.InRoom)
                 {
                     // 退室
                     PhotonNetwork.LeaveRoom();
                 }
+                SceneManager.LoadScene("Select");
+            }
+            else
+            {
+                HP(hp, parameter.maxHp);
             }
         }
     }
@@ -96,6 +78,31 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             var enemy = other.GetComponentInParent<Player>();
             hp -= enemy.parameter.atk[n];
             Debug.Log(hp);
+        }
+    }
+
+    void Move()
+    {
+        // 入力方向（ベクトル）を正規化する
+        var direction = new Vector2(Input.GetAxis("Horizontal"), 0).normalized;
+        if (direction.x > 0 && !renderer.flipX)
+        {
+            renderer.flipX = true;
+        }
+        else if (direction.x < 0 && renderer.flipX)
+        {
+            renderer.flipX = false;
+        }
+
+        // 移動速度を時間に依存させて、移動量を求める
+        var dv = parameter.speed * Time.deltaTime * direction;
+        transform.Translate(dv.x, dv.y, 0f);
+
+        //ジャンプ
+        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
+        {
+            isJump = true;
+            this.rb.AddForce(transform.up * parameter.jumpPower);
         }
     }
 
@@ -144,6 +151,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         var effect = Instantiate(effects[n]);
         effect.Init(pos, isFlip, this.gameObject);
+    }
+
+    void HP(float current, int max)
+    {
+        hpGauge.GetComponentInChildren<Text>().text = current + "/" + max;
+        hpGauge.GetComponent<Image>().fillAmount = current / max;
     }
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
