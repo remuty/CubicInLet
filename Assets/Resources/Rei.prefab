@@ -198,7 +198,7 @@ MonoBehaviour:
   effects:
   - {fileID: 114936380763534766, guid: c045329356f535d41b53ac13cf434c6e, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114936380763534766, guid: 0d810577d83287740b996521b9531371, type: 3}
 --- !u!70 &1449599830583776356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

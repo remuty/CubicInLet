@@ -109,7 +109,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         transform.Translate(dv.x, dv.y, 0f);
 
         //ジャンプ
-        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
+        if (Input.GetButtonDown("Jump") && !isJump)
         {
             isJump = true;
             this.rb.AddForce(transform.up * parameter.jumpPower);
@@ -118,15 +118,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     void PlayAttack()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             Attack(0);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Attack(1);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Attack(2);
         }

@@ -28,7 +28,7 @@ public class Effect : MonoBehaviour
     public void Init(Vector3 origin, bool isFlip, GameObject parent)
     {
         transform.position = origin;
-        GetComponentInChildren<SpriteRenderer>().flipX = isFlip;
+        GetComponent<SpriteRenderer>().flipX = isFlip;
         this.transform.parent = parent.transform;
 
         //エフェクト位置調整
