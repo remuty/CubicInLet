@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e290e5d04c0a64dac68583bcd3173d, type: 3}
   m_Name: Shiuzuku
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 150
   speed: 3
   jumpPower: 200
-  atk: 0a000000140000001e000000
+  atk: 0a0000000a0000001e000000
   coolTime:
   - 0
   - 2

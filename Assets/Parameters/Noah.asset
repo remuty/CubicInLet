@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   jumpPower: 200
-  atk: 0a000000140000001e000000
+  atk: 05000000060000001e000000
   coolTime:
   - 0.3
   - 2

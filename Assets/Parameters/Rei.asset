@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e290e5d04c0a64dac68583bcd3173d, type: 3}
   m_Name: Rei
   m_EditorClassIdentifier: 
-  maxHp: 100
-  speed: 3
+  maxHp: 150
   jumpPower: 200
+  speed: 3
   atk: 0a000000140000001e000000
   coolTime:
   - 0.2
-  - 2
+  - 3
   - 15

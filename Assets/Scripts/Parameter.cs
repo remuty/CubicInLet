@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "MyScriptable/Create Parameter")]
 public class Parameter : ScriptableObject
 {
-    public int maxHp, speed, jumpPower;
+    public int maxHp, jumpPower;
+    public float speed;
     public int[] atk;
     public float[] coolTime;
 }
