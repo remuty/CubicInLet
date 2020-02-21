@@ -10,6 +10,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private Parameter parameter;
     [SerializeField] private Effect[] effects;
+    [SerializeField] Sprite[] skillIcons;
 
     private Rigidbody2D rb;
     private SpriteRenderer renderer;
@@ -29,6 +30,20 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         animator = GetComponent<Animator>();
         hpGauge = GameObject.Find("HpGauge");
         playerName = GetComponentInChildren<Text>();
+
+        if (photonView.IsMine)
+        {
+            //カメラを子オブジェクトにする
+            GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
+
+            //スキルアイコンをセット
+            for (var i = 0; i < skillIcons.Length; i++)
+            {
+                GameObject.Find("Skill" + i).GetComponent<Image>().sprite = skillIcons[i];
+            }
+        }
+        
+        //名前設定
         if (photonView.Owner.NickName == "")
         {
             playerName.text = parameter.name;
@@ -36,11 +51,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             playerName.text = photonView.Owner.NickName;
-        }
-
-        if (photonView.IsMine)
-        {
-            GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
         }
     }
 
@@ -109,7 +119,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         transform.Translate(dv.x, dv.y, 0f);
 
         //ジャンプ
-        if (Input.GetButtonDown("Jump") && !isJump)
+        if (Input.GetKeyDown(KeyCode.W) && !isJump)
         {
             isJump = true;
             this.rb.AddForce(transform.up * parameter.jumpPower);
@@ -132,7 +142,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    void Attack(int n)
+    public void Attack(int n)
     {
         animator.SetInteger("Attack", n);
 

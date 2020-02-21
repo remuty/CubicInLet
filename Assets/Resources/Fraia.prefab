@@ -215,6 +215,10 @@ MonoBehaviour:
   - {fileID: 114936380763534766, guid: 8a5657c7c2e75784a859673c57a45e03, type: 3}
   - {fileID: 5897489322444355226, guid: 1387d9a52bbedb446b323dd606612cfe, type: 3}
   - {fileID: 114625064615467574, guid: bb1a4ad72fd610f4b8c045c0de2622c6, type: 3}
+  skillIcons:
+  - {fileID: 21300000, guid: c8d4d532a60ec7646a022232dabae14e, type: 3}
+  - {fileID: 21300000, guid: 41b1c46781d455147ac11029fadc6be0, type: 3}
+  - {fileID: 21300000, guid: 7c3139bf6a052c54399ac90a9a9991c3, type: 3}
 --- !u!1 &1704595175707937204
 GameObject:
   m_ObjectHideFlags: 0
