@@ -20,6 +20,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     private int hp;
     private bool isJump;
+    private bool[] isCoolTime;
+    private float[] elapsedTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         animator = GetComponent<Animator>();
         hpGauge = GameObject.Find("HpGauge");
         playerName = GetComponentInChildren<Text>();
+        isCoolTime = new bool[skillIcons.Length];
+        elapsedTime = new float[skillIcons.Length];
 
         if (photonView.IsMine)
         {
@@ -77,6 +81,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             {
                 HP(hp, parameter.maxHp);
             }
+
+            CoolDown();
         }
     }
 
@@ -144,21 +150,25 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Attack(int n)
     {
-        animator.SetInteger("Attack", n);
-
-        var pos = transform.position;
-        if (renderer.flipX)
+        if (!isCoolTime[n])
         {
-            pos.x += 1;
-        }
-        else
-        {
-            pos.x -= 1;
-        }
+            isCoolTime[n] = true;
+            animator.SetInteger("Attack", n);
 
-        //RPCで実行
-        photonView.RPC(nameof(FireEffect), RpcTarget.All,
-            n, pos, renderer.flipX);
+            var pos = transform.position;
+            if (renderer.flipX)
+            {
+                pos.x += 1;
+            }
+            else
+            {
+                pos.x -= 1;
+            }
+
+            //RPCで実行
+            photonView.RPC(nameof(FireEffect), RpcTarget.All,
+                n, pos, renderer.flipX);
+        }
     }
 
     [PunRPC]
@@ -174,6 +184,23 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         hpGauge.GetComponent<Image>().fillAmount = current / max;
     }
 
+    void CoolDown()
+    {
+        for (var i = 0; i < skillIcons.Length; i++)
+        {
+            if (isCoolTime[i])
+            {
+                elapsedTime[i] += Time.deltaTime;
+                GameObject.Find("CoolDown" + i).GetComponent<Image>().fillAmount 
+                    = 1 - elapsedTime[i] / parameter.coolTime[i];
+                if (elapsedTime[i] >= parameter.coolTime[i])
+                {
+                    isCoolTime[i] = false;
+                    elapsedTime[i] = 0;
+                }
+            }
+        }
+    }
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)

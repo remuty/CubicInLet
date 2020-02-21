@@ -199,6 +199,10 @@ MonoBehaviour:
   - {fileID: 114936380763534766, guid: 44e9f69119709c14ab11c1d45fe93a62, type: 3}
   - {fileID: 114936380763534766, guid: 4d4ba49e3f1476b4da38e963f6e1cbcf, type: 3}
   - {fileID: 114936380763534766, guid: 9e8f832e3c3545f488e2425f88b606ae, type: 3}
+  skillIcons:
+  - {fileID: 21300000, guid: 73f5463fb169c0e4b8f23e27719fe779, type: 3}
+  - {fileID: 21300000, guid: 35e3c81bddcd7c64f9e3bbc5c766187a, type: 3}
+  - {fileID: 21300000, guid: 4dc8538b3df7ded40a421923e1cad04c, type: 3}
 --- !u!70 &1449599830583776356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

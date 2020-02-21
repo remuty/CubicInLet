@@ -16,3 +16,7 @@ MonoBehaviour:
   speed: 3
   jumpPower: 200
   atk: 0a000000140000001e000000
+  coolTime:
+  - 3
+  - 10
+  - 15

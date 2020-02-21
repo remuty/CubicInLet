@@ -7,4 +7,5 @@ public class Parameter : ScriptableObject
 {
     public int maxHp, speed, jumpPower;
     public int[] atk;
+    public float[] coolTime;
 }
