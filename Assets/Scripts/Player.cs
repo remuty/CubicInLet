@@ -22,6 +22,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     private bool isJump;
     private bool[] isCoolTime;
     private float[] elapsedTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             //カメラを子オブジェクトにする
-            GameObject.FindWithTag("MainCamera").transform.parent = this.transform;
+            var camera = GameObject.FindWithTag("MainCamera");
+            camera.transform.parent = this.transform;
+            camera.transform.localPosition = new Vector3(0, 0.8f, -10);
+
+            var save = GameObject.Find("SaveManager");
+            save.transform.parent = this.transform;
+            save.transform.localPosition = new Vector3(0, 0);
 
             //スキルアイコンをセット
             for (var i = 0; i < skillIcons.Length; i++)
@@ -46,7 +53,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 GameObject.Find("Skill" + i).GetComponent<Image>().sprite = skillIcons[i];
             }
         }
-        
+
         //名前設定
         if (photonView.Owner.NickName == "")
         {
@@ -191,7 +198,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if (isCoolTime[i])
             {
                 elapsedTime[i] += Time.deltaTime;
-                GameObject.Find("CoolDown" + i).GetComponent<Image>().fillAmount 
+                GameObject.Find("CoolDown" + i).GetComponent<Image>().fillAmount
                     = 1 - elapsedTime[i] / parameter.coolTime[i];
                 if (elapsedTime[i] >= parameter.coolTime[i])
                 {

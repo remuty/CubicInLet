@@ -127,6 +127,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 53fa0335e559cf44fa88f1df53a9d673, type: 3}
   - {fileID: 21300000, guid: f7ad4c460b0a0dc4b9a32ca26e368f46, type: 3}
   - {fileID: 21300000, guid: a213f6cabfa059744b7f452d922e38bd, type: 3}
+  - {fileID: 21300000, guid: b5173faca28b3a94e9210e883ac51197, type: 3}
   effect: {fileID: 1867831657563085486, guid: 43a4fc4fc3c984e4285a0372179987b6, type: 3}
 --- !u!61 &4015438864372915255
 BoxCollider2D:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.IO;
 
 public class ConnectRoom : MonoBehaviourPunCallbacks
 {
@@ -16,9 +17,9 @@ public class ConnectRoom : MonoBehaviourPunCallbacks
     // マッチングが成功した時に呼ばれるコールバック
     public override void OnJoinedRoom()
     {
+        var pos = SaveManager.save.position;
         var n = SelectCharacter.characterNum;
         // マッチング後、自分自身のネットワークオブジェクトを生成する
-        var v = new Vector2(2, 0.5f);
-        PhotonNetwork.Instantiate(characterName[n], v, Quaternion.identity);
+        PhotonNetwork.Instantiate(characterName[n], pos, Quaternion.identity);
     }
 }
