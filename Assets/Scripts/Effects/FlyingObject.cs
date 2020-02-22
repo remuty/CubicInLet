@@ -7,7 +7,6 @@ public class FlyingObject : MonoBehaviour
 {
     [SerializeField] private float speed, time;
     [SerializeField] private bool canPierce;
-    [SerializeField] private GameObject effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +34,6 @@ public class FlyingObject : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (effect != null)
-            {
-                Instantiate(effect, transform.position, Quaternion.identity);
-            }
             if (!canPierce)
             {
                 Destroy(gameObject);
