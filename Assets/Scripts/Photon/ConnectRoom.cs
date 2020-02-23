@@ -18,7 +18,7 @@ public class ConnectRoom : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         var pos = SaveManager.save.position;
-        var n = SelectCharacter.characterNum;
+        var n = SaveManager.save.characterNum;
         // マッチング後、自分自身のネットワークオブジェクトを生成する
         PhotonNetwork.Instantiate(characterName[n], pos, Quaternion.identity);
     }

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Fraia
   m_EditorClassIdentifier: 
   maxHp: 100
-  speed: 3
   jumpPower: 200
+  speed: 3
   atk: 0a000000140000001e000000
   coolTime:
   - 3
   - 10
   - 15
+  sprite: {fileID: 21300000, guid: 86f5526723d6b9c4fb4fa886a693e67b, type: 3}

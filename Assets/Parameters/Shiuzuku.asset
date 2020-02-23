@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Shiuzuku
   m_EditorClassIdentifier: 
   maxHp: 150
-  speed: 3
   jumpPower: 200
+  speed: 3
   atk: 0a0000000a0000001e000000
   coolTime:
   - 0
   - 2
   - 10
+  sprite: {fileID: 21300000, guid: d478590b101df864db60dd0204dd99e2, type: 3}

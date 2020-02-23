@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HighlightCharacter : MonoBehaviour
 {
-    [SerializeField] private GameObject[] character;
+    public Button[] characters;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +15,10 @@ public class HighlightCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (var i = 0; i < character.Length; i++)
+        for (var i = 0; i < characters.Length; i++)
         {
-            var btn = character[i].GetComponent<Button>();
-            var colors = btn.colors;
-            var n = SelectCharacter.characterNum;
+            var colors = characters[i].colors;
+            var n = SaveManager.save.characterNum;
             if (i == n)
             {
                 colors.normalColor = new Color(1,1,1,1);
@@ -29,7 +28,7 @@ public class HighlightCharacter : MonoBehaviour
                 colors.normalColor = new Color(1, 1, 1, 170f / 255f);
             }
 
-            btn.colors = colors;
+            characters[i].colors = colors;
         }
     }
 }

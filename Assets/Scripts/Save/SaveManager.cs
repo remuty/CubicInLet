@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using System.IO;
 using Photon.Pun;
@@ -17,12 +18,21 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         Load();
+        Debug.Log(save.characterNum);
     }
 
     public void Save()
     {
-        save.position = transform.position;
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in players)
+        {
+            if (player.GetPhotonView().IsMine)
+            {
+                save.position = player.transform.position;
+            }
+        }
         string json = JsonUtility.ToJson(save);
         StreamWriter streamWriter = new StreamWriter(filePath);
         streamWriter.Write(json);

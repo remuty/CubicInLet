@@ -9,4 +9,5 @@ public class Parameter : ScriptableObject
     public float speed;
     public int[] atk;
     public float[] coolTime;
+    public Sprite sprite;
 }

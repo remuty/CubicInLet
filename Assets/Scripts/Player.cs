@@ -43,10 +43,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             camera.transform.parent = this.transform;
             camera.transform.localPosition = new Vector3(0, 0.8f, -10);
 
-            var save = GameObject.Find("SaveManager");
-            save.transform.parent = this.transform;
-            save.transform.localPosition = new Vector3(0, 0);
-
             //スキルアイコンをセット
             for (var i = 0; i < skillIcons.Length; i++)
             {
@@ -82,7 +78,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                     // 退室
                     PhotonNetwork.LeaveRoom();
                 }
-                SceneManager.LoadScene("Select");
+                SceneManager.LoadScene("Start");
             }
             else
             {

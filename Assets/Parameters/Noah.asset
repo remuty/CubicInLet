@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Noah
   m_EditorClassIdentifier: 
   maxHp: 100
-  speed: 3
   jumpPower: 200
+  speed: 3
   atk: 05000000060000001e000000
   coolTime:
   - 0.3
   - 2
   - 15
+  sprite: {fileID: 21300000, guid: 1c4eac3551353d546975696e170c93d6, type: 3}

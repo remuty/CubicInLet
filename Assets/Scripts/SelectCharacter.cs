@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
 {
-    public static int characterNum;
+    public Parameter[] parameters;
+
+    public Image image;
+
+    public Text name, hp, atk, speed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Select(0);
     }
 
     // Update is called once per frame
@@ -17,23 +22,14 @@ public class SelectCharacter : MonoBehaviour
         
     }
 
-    public void Select0()
+    public void Select(int n)
     {
-        characterNum = 0;
-    }
+        image.sprite = parameters[n].sprite;
+        name.text = parameters[n].name;
+        hp.text = parameters[n].maxHp.ToString();
+        atk.text = parameters[n].atk[0].ToString();
+        speed.text = parameters[n].speed.ToString();
 
-    public void Select1()
-    {
-        characterNum = 1;
-    }
-
-    public void Select2()
-    {
-        characterNum = 2;
-    }
-
-    public void Select3()
-    {
-        characterNum = 3;
+        SaveManager.save.characterNum = n;
     }
 }
