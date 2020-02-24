@@ -72,13 +72,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
             if (hp <= 0)
             {
-                Destroy(gameObject);
-                if (PhotonNetwork.InRoom)
-                {
-                    // 退室
-                    PhotonNetwork.LeaveRoom();
-                }
-                SceneManager.LoadScene("Start");
+                //HPがなくなったら初期位置に戻る
+                transform.position = new Vector3(0,0);
             }
             else
             {
