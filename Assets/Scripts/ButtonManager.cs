@@ -34,6 +34,7 @@ public class ButtonManager : MonoBehaviour
 
     public void LoadCreateCharacter()
     {
+        SaveManager.save = new SaveData();
         SceneManager.LoadScene("CreateCharacter");
     }
 
@@ -53,12 +54,27 @@ public class ButtonManager : MonoBehaviour
         LoadStart();
     }
 
+    //キャラクター作成
     public void CreateCharacter(GameObject inputField)
     {
         var input = inputField.GetComponent<TMP_InputField>().text;
         if (input != "")
         {
             SaveManager.save.userName = input;
+            saveManager.Save();
+            LoadStart();
+        }
+    }
+
+    public void Login()
+    {
+        //セーブデータがなければ新規作成
+        if (SaveManager.save.userName == null)
+        {
+            LoadCreateCharacter();
+        }
+        else
+        {
             LoadStart();
         }
     }

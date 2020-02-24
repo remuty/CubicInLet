@@ -20,7 +20,6 @@ public class SaveManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         Load();
-        Debug.Log(save.characterNum);
     }
 
     public void Save()
