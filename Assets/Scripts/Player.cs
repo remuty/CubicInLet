@@ -9,6 +9,11 @@ using UnityEngine.UI;
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private Parameter parameter;
+
+    public Parameter Parameter
+    {
+        get { return parameter; }
+    }
     [SerializeField] private Effect[] effects;
     [SerializeField] Sprite[] skillIcons;
 
@@ -94,14 +99,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Attack"))
+        if (other.gameObject.CompareTag("EnemyAttack"))
         {
             //攻撃に応じてダメージを受ける
-            var s = other.gameObject.name.Replace("(Clone)", "");
-            var n = int.Parse(s);
-
-            var enemy = other.GetComponentInParent<Player>();
-            hp -= enemy.parameter.atk[n];
+            var enemy = other.GetComponentInParent<Enemy>();
+            hp -= enemy.Parameter.atk[0];
         }
     }
 
@@ -120,7 +122,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         // 移動速度を時間に依存させて、移動量を求める
         var dv = parameter.speed * Time.deltaTime * direction;
-        transform.Translate(dv.x, dv.y, 0f);
+        transform.Translate(dv.x, 0, 0f);
 
         //ジャンプ
         if (Input.GetKeyDown(KeyCode.W) && !isJump)

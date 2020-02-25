@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc3284eace5a64d4bb516df7d7effdb9, type: 3}
-  m_Name: PunSceneSettingsFile
+  m_Script: {fileID: 11500000, guid: f8e290e5d04c0a64dac68583bcd3173d, type: 3}
+  m_Name: Dragon
   m_EditorClassIdentifier: 
-  SceneSettingsListFoldoutOpen: 1
-  MinViewIdPerScene: []
+  maxHp: 100
+  jumpPower: 0
+  speed: 2
+  atk: 0a000000
+  coolTime: []
+  sprite: {fileID: 0}

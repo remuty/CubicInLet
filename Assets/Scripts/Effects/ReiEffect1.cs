@@ -22,9 +22,6 @@ public class ReiEffect1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Instantiate(effect, transform.position, Quaternion.identity);
-        }
+        Instantiate(effect, transform.position, Quaternion.identity);
     }
 }
