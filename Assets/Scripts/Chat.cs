@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using TMPro;
 
 public class Chat : MonoBehaviour, IPunObservable
 {
     public GameObject chatView, textPrefab, content;
-    public InputField input;
+    public TMP_InputField input;
 
     private PhotonView photonView;
     private ScrollRect scroll;
@@ -55,7 +56,10 @@ public class Chat : MonoBehaviour, IPunObservable
     {
         if (input.text != "")
         {
-            photonView.RequestOwnership();
+            if (!photonView.IsMine)
+            {
+                photonView.RequestOwnership();
+            }
             text = PhotonNetwork.LocalPlayer.NickName + ": " + input.text;
             input.text = "";
             input.ActivateInputField();
@@ -81,6 +85,6 @@ public class Chat : MonoBehaviour, IPunObservable
     void ChatUpdate()
     {
         var message = Instantiate(textPrefab, content.transform);
-        message.GetComponent<Text>().text = text;
+        message.GetComponent<TextMeshProUGUI>().text = text;
     }
 }

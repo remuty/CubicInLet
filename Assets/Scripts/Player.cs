@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     private SpriteRenderer renderer;
     private Animator animator;
     private GameObject hpGauge;
-    private Text playerName;
+    private TextMeshProUGUI playerName;
 
     private int hp;
     private bool isJump;
@@ -37,7 +38,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         hpGauge = GameObject.Find("HpGauge");
-        playerName = GetComponentInChildren<Text>();
+        playerName = GetComponentInChildren<TextMeshProUGUI>();
         isCoolTime = new bool[skillIcons.Length];
         elapsedTime = new float[skillIcons.Length];
 
@@ -184,7 +185,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     void HP(float current, int max)
     {
-        hpGauge.GetComponentInChildren<Text>().text = current + "/" + max;
+        hpGauge.GetComponentInChildren<TextMeshProUGUI>().text = current + "/" + max;
         hpGauge.GetComponent<Image>().fillAmount = current / max;
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ public class DisplayUserInfo : MonoBehaviour
         character.sprite = parameters[n].sprite;
 
         var name = save.userName;
-        var nameText = GetComponentInChildren<Text>();
+        var nameText = GetComponentInChildren<TextMeshProUGUI>();
         nameText.text = name;
     }
     // Update is called once per frame
