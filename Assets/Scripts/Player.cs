@@ -72,8 +72,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         // 自身が生成したオブジェクトだけに処理を行う
         if (photonView.IsMine)
         {
-            Move();
-            PlayAttack();
+            if (!Chat.IsChat)
+            {
+                //チャット中は行動制限
+                Move();
+                PlayAttack();
+            }
 
             if (hp <= 0)
             {

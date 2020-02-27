@@ -9590,6 +9590,7 @@ MonoBehaviour:
   textPrefab: {fileID: 4159444207490141426, guid: ab533900c3aa5fe428c90126640eec91,
     type: 3}
   content: {fileID: 232452281}
+  input: {fileID: 1681069200}
 --- !u!1 &1253460978
 GameObject:
   m_ObjectHideFlags: 0
@@ -10969,10 +10970,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1189515806}
         m_MethodName: SendMessage
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1681069200}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

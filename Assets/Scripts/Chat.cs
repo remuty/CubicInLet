@@ -8,12 +8,15 @@ using Photon.Pun;
 public class Chat : MonoBehaviour, IPunObservable
 {
     public GameObject chatView, textPrefab, content;
+    public InputField input;
 
     private PhotonView photonView;
     private ScrollRect scroll;
     private RectTransform contentSize;
     private string text;
     private float size;
+
+    public static bool IsChat { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +40,18 @@ public class Chat : MonoBehaviour, IPunObservable
             scroll.verticalNormalizedPosition = 0;
             size = contentSize.sizeDelta.y;
         }
+
+        if (input.isFocused)
+        {
+            IsChat = true;
+        }
+        else
+        {
+            IsChat = false;
+        }
     }
 
-    public void SendMessage(InputField input)
+    public void SendMessage()
     {
         if (input.text != "")
         {
